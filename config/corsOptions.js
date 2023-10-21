@@ -1,4 +1,4 @@
-const allowedOrigins = ["https://www.google.com", "http://localhost:3000"];
+const allowedOrigins = ["https://techdia.vercel.app", "http://localhost:3000"];
 const corsOptions = {
   origin: function (origin, callback) {
     // add during develpment || !origin. remove at production
