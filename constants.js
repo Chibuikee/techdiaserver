@@ -1,0 +1,16 @@
+exports.constants = {
+  OK: 200,
+  Created: 201,
+  Validation_Error: 400,
+  Unauthorized: 401,
+  Forbidden: 403,
+  Not_Found: 404,
+  Method_Not_Allowed: 405,
+  Not_Acceptable: 406,
+  Request_Timeout: 408,
+  Conflict: 409,
+  Unsupported_Media_Type: 415,
+  Internal_Server_Error: 500,
+  Not_Implemented: 501,
+  Service_Unavailable: 503,
+};
