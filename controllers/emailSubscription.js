@@ -17,31 +17,24 @@ const transporter = nodeMailer.createTransport({
   },
 });
 
-const mailOptions = {
-  from: { name: "Techdia", address: "sopewenike@gmail.com" },
-  // from: `"Techdia👻" sopewenike@gmail.com`, // sender address
-  to: ["sopewenike@yahoo.com"], // list of receivers
-  subject: "A new member subscription", // Subject line
-  text: "Hello Techdia Admin, I just subscribed to your mail", // plain text body
-  html: "<h1>Hello Techdia Admin, I just subscribed to your mail. I cant wait to get all the exciting stuffs that you have for me. Thanks</h1>", // html body
-  attachments: [
-    {
-      filename: "Growth-CLUB-site-icon.png",
-      path: path.join(__dirname, "Growth-CLUB-site-icon.png"),
-      contentType: "image/png",
-    },
-  ],
-};
-// async function sendMail(transporter, mailOptions) {
-//   await transporter.sendMail(mailOptions);
-//   console.log("Email sent succesfully.");
-// }
-
-// callSendMail function is for testing purposes only
-// function callSendMail() {
-//   // trigger for sending mails
-//   // sendMail(transporter, mailOptions);
-// }
+function sendingDetails(email) {
+  const mailOptions = {
+    from: { name: "Techdia", address: process.env.USER },
+    // from: '"Fred Foo 👻" <foo@example.com>', // sender address
+    to: ["sopewenike@yahoo.com"], // list of receivers
+    subject: "A new member subscription", // Subject line
+    text: "Hello Techdia Admin, I just subscribed to your mail", // plain text body // html body
+    html: `<h1>Hello Techdia Admin, I just subscribed to your mail using ${email}. I can't wait to get all the exciting stuffs that you have for me. Thanks</h1>`, // html body
+    attachments: [
+      {
+        filename: "Techdia Logo",
+        path: path.join(__dirname, "favicon-32x32.png"),
+        contentType: "image/png",
+      },
+    ],
+  };
+  return mailOptions;
+}
 
 const subscribeUserToEmailAd = asyncHandler(async (req, res) => {
   const { email } = req.params;
@@ -52,8 +45,8 @@ const subscribeUserToEmailAd = asyncHandler(async (req, res) => {
   }
 
   if (email) {
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent succesfully.", info);
+    const info = await transporter.sendMail(sendingDetails(email));
+    console.log("Email sent succesfully.");
     res.status(201).json({ message: "Email sent succesfully." });
   }
 

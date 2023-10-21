@@ -10,12 +10,12 @@ function sendingDetails(name, email, subject, message) {
     subject: subject ? `${subject}` : "Client enquiry", // Subject line
     text: "Hello Techdia Admin, I just subscribed to your mail", // plain text body
     html: message
-      ? `<h1>Hello Techdia Admin, my name is ${name}. n/ Enquirie:${message} </h1>`
+      ? `<h1>Hello Techdia Admin, my name is ${name}.  Enquirie:${message} </h1>`
       : `<h1>Hello Techdia Admin,${email} </h1>`, // html body
     attachments: [
       {
-        filename: "Growth-CLUB-site-icon.png",
-        path: path.join(__dirname, "Growth-CLUB-site-icon.png"),
+        filename: "Techdia Logo",
+        path: path.join(__dirname, "favicon-32x32.png"),
         contentType: "image/png",
       },
     ],
